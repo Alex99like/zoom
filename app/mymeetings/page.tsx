@@ -106,7 +106,7 @@ const MyMeetings = () => {
       name: 'Копировать',
       render: (meetingId: string) => {
         return (
-          <EuiCopy textToCopy={`${process.env.REACT_APP_HOST}/join/${meetingId}`}>
+          <EuiCopy textToCopy={`https://vc-chat-connect.vercel.app/join/${meetingId}`}>
             {(copy) => (
               <EuiButtonIcon 
                 iconType={'copy'}
