@@ -50,7 +50,7 @@ export const OneOnOneMeeting = () => {
 
     if (!meetingName.length) {
       clonedShowErrors.meetingName.show = true
-      clonedShowErrors.meetingName.message = ['Please Enter Meeting Name']
+      clonedShowErrors.meetingName.message = ['Введите Имя']
       errors = true
     } else {
       clonedShowErrors.meetingName.show = false
@@ -59,7 +59,7 @@ export const OneOnOneMeeting = () => {
 
     if (!selectedUsers.length) {
       clonedShowErrors.meetingUser.show = true
-      clonedShowErrors.meetingUser.message = ['Please select a User']
+      clonedShowErrors.meetingUser.message = ['Выберете пользователей']
       errors = true
     } else {
       clonedShowErrors.meetingUser.show = false
@@ -84,7 +84,7 @@ export const OneOnOneMeeting = () => {
         status: true
       })
       createToast({
-        title: 'One on One Meeting Created Successfully',
+        title: 'Мит один на один создан успешно',
         type: 'success'
       })
       navigate('/')
@@ -106,21 +106,21 @@ export const OneOnOneMeeting = () => {
       >
         <EuiForm>
           <MeetingNameField 
-            label='Meeting Name'
-            placeholder='Meeting'
+            label='Имя Мита'
+            placeholder='Мит'
             value={meetingName}
             setMeetingName={setMeetingName}
             isInvalid={showErrors.meetingName.show}
             error={showErrors.meetingName.message}
           />
           <MeetingUsersField
-            label="Invite User"
+            label="Пригласить"
             options={users}
             onChange={onUserChange}
             selectedOptions={selectedUsers}
             singleSelection={{ asPlainText: true }}
             isClearable={false}
-            placeholder="Select a user"
+            placeholder="Выбрать пользователей"
             isInvalid={showErrors.meetingUser.show}
             error={showErrors.meetingUser.message}
           />

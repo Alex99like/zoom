@@ -11,9 +11,9 @@ export const MeetingMaximumUserField = ({
   value
 }: MeetingMaximumUserFieldProps) => {
   return (
-    <EuiFormRow label='Maximum People'>
+    <EuiFormRow label='Максимум людей'>
       <EuiFieldNumber
-        placeholder="Maximum People"
+        placeholder="Максимум людей"
         min={1}
         max={50}
         value={value}

@@ -54,7 +54,7 @@ export const VideoConference = () => {
 
     if (!meetingName.length) {
       clonedShowErrors.meetingName.show = true
-      clonedShowErrors.meetingName.message = ['Please Enter Meeting Name']
+      clonedShowErrors.meetingName.message = ['Введите имя']
       errors = true
     } else {
       clonedShowErrors.meetingName.show = false
@@ -63,7 +63,7 @@ export const VideoConference = () => {
 
     if (!selectedUsers.length) {
       clonedShowErrors.meetingUser.show = true
-      clonedShowErrors.meetingUser.message = ['Please select a User']
+      clonedShowErrors.meetingUser.message = ['Выберите пользователей']
     } else {
       clonedShowErrors.meetingUser.show = false
       clonedShowErrors.meetingUser.message = []
@@ -90,8 +90,8 @@ export const VideoConference = () => {
       })
       createToast({
         title: anyoneCanJoin 
-          ? 'Anyone can join meeting created successfully' 
-          : 'Video Conference created successfully',
+          ? 'Видеоконферения создана для всех' 
+          : 'Видеоконферения создана успешная',
         type: 'success'
       })
       navigate('/')
@@ -112,18 +112,18 @@ export const VideoConference = () => {
         alignItems="center"
       >
         <EuiForm>
-          <EuiFormRow display="columnCompressedSwitch" label='Anyone can Join'>
+          <EuiFormRow display="columnCompressedSwitch" label='Каждый может присоединиться'>
             <EuiSwitch 
               showLabel={false}
-              label='Anyone can Join'
+              label='Каждый может присоединиться'
               checked={anyoneCanJoin}
               onChange={(e) => setAnyoneCanJoin(e.target.checked)}
               compressed
             />
           </EuiFormRow>
           <MeetingNameField 
-            label='Meeting Name'
-            placeholder='Meeting'
+            label='Имя Мита'
+            placeholder='Мит'
             value={meetingName}
             setMeetingName={setMeetingName}
             isInvalid={showErrors.meetingName.show}
@@ -136,13 +136,13 @@ export const VideoConference = () => {
             />
           ) : (
             <MeetingUsersField
-              label="Invite User"
+              label="Пригласить"
               options={users}
               onChange={onUserChange}
               selectedOptions={selectedUsers}
               singleSelection={false}
               isClearable={false}
-              placeholder="Select a user"
+              placeholder="Выбрать пользователей"
               isInvalid={showErrors.meetingUser.show}
               error={showErrors.meetingUser.message}
             />

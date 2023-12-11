@@ -13,7 +13,7 @@ export const Header = () => {
   const location = useLocation()
   const username = useAppSelector(zoom => zoom.auth.userInfo?.name)
   //const isDarkTheme = useAppSelector((zoom) => zoom.auth.isDarkTheme)
-  const [breadCrumbs, setBreadCrumbs] = useState([{ text: 'Dashboard' }])
+  const [breadCrumbs, setBreadCrumbs] = useState([{ text: 'Главная' }])
   const [isResponsive, setIsResponsive] = useState(false)
   const dispatch = useDispatch()
   const logout = () => {
@@ -47,7 +47,7 @@ export const Header = () => {
           <EuiText>
             <h2 style={{ padding: '0 1vw' }}>
               <EuiTextColor color="#0b5cff">
-                Zoom
+                VC
               </EuiTextColor>
             </h2>
           </EuiText>
@@ -60,8 +60,8 @@ export const Header = () => {
           {username ? (
             <EuiText>
               <h3>
-                <EuiTextColor color="white">Hello, </EuiTextColor>
-                <EuiTextColor color="#0b5cff">{username}</EuiTextColor>
+                <EuiTextColor color="white">{username}</EuiTextColor>
+                {/* <EuiTextColor color="#0b5cff">{username}</EuiTextColor> */}
               </h3>
             </EuiText>
           ) : null}

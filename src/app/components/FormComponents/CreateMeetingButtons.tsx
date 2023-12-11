@@ -21,7 +21,7 @@ export const CreateMeetingButtons = ({
           fill 
           onClick={() => (isEdit ? closeFlyout!() : navigate('/'))}
         >
-          Cancel
+          Отменить
         </EuiButton>
       </EuiFlexItem>
       <EuiFlexItem grow={false}>
@@ -30,7 +30,7 @@ export const CreateMeetingButtons = ({
           fill 
           onClick={createMeeting}
         >
-          Submit
+          Сохранить
         </EuiButton>
       </EuiFlexItem>
     </EuiFlexGroup>

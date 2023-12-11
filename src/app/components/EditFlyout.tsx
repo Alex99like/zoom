@@ -90,10 +90,10 @@ export const EditFlyout = ({
       <EuiFlyoutBody>
         <EuiForm>
           <MeetingNameField
-            label="Meeting name"
+            label="Имя Мита"
             isInvalid={showErrors.meetingName.show}
             error={showErrors.meetingName.message}
-            placeholder="Meeting name"
+            placeholder="Мит"
             value={meetingName}
             setMeetingName={setMeetingName}
           />
@@ -101,7 +101,7 @@ export const EditFlyout = ({
             <MeetingMaximumUserField value={size} setValue={setSize} />
           ) : (
             <MeetingUsersField
-              label="Invite"
+              label="Пользовтели"
               isInvalid={showErrors.meetingUser.show}
               error={showErrors.meetingUser.message}
               options={users}
@@ -111,14 +111,14 @@ export const EditFlyout = ({
                 meetingType === '1-on-1'? { asPlainText: true } : false
               }
               isClearable={false}
-              placeholder="Select a Users"
+              placeholder="Выбрать пользователей"
             />
           )}
           <MeetingsDateField selected={startDate} setStartDate={setStartDate} />
-          <EuiFormRow display="columnCompressedSwitch" label="Cancel Meeting">
+          <EuiFormRow display="columnCompressedSwitch" label="Закрыть Мит">
             <EuiSwitch
               showLabel={false}
-              label='Cancel Meeting'
+              label='Закрыть Мит'
               checked={status}
               onChange={(e) => setStatus(e.target.checked)}
             />

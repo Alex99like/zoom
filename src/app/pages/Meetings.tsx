@@ -45,19 +45,19 @@ export const Meetings = () => {
   const columns = [
     {
       field: 'meetingName',
-      name: 'Meeting Name'
+      name: 'Имя'
     },
     {
       field: 'meetingType',
-      name: 'Meeting Type'
+      name: 'Тип'
     },
     {
       field: 'meetingDate',
-      name: 'Meeting Date'
+      name: 'Дата'
     },
     {
       field: '',
-      name: 'Status',
+      name: 'Статус',
       render: (meeting: MeetingType) => {
         if (meeting.status) {
           if (meeting.meetingDate === moment().format('L')) {
@@ -66,7 +66,7 @@ export const Meetings = () => {
                 style={{ color: 'black' }}
                 to={`/join/${meeting.meetingId}`}
               >
-                Join Now
+                Присоединится
               </Link>
             </EuiBadge>
           } else if (moment(meeting.meetingDate).isBefore(moment().format('L'))) {
@@ -79,7 +79,7 @@ export const Meetings = () => {
     },
     {
       field: 'meetingId',
-      name: 'Copy Link',
+      name: 'Копировать',
       render: (meetingId: string) => {
         return (
           <EuiCopy textToCopy={`${process.env.REACT_APP_HOST}/join/${meetingId}`}>

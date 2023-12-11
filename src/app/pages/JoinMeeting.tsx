@@ -5,6 +5,8 @@ import { onAuthStateChanged } from "firebase/auth"
 import { firebaseAuth, meetingsRef } from "../../utils/FirebaseConfig"
 import { getDocs, query, where } from "firebase/firestore"
 import moment from "moment"
+import { ZegoUIKitPrebuilt } from '@zegocloud/zego-uikit-prebuilt'
+import { generateMeetingId } from "../../utils/generateMeetingId"
 
 export const JoinMeeting = () => {
   const params = useParams()
@@ -83,7 +85,43 @@ export const JoinMeeting = () => {
     getMeetingData()
   }, [userLoaded])
 
+  const appId = 1069017457
+  const serverSecret = 'f1591066c5f4ce9fbc6a8fc6381e86ed'
+
+  const myMeeting = async (element: any) => {
+    const kitToken = ZegoUIKitPrebuilt.generateKitTokenForTest(
+      appId,
+      serverSecret,
+      params.id as string,
+      user.uid ? user.uid : generateMeetingId(),
+      user.displayName ? user.displayName : generateMeetingId()
+    )
+    const zp = ZegoUIKitPrebuilt.create(kitToken)
+    zp.joinRoom({
+      container: element,
+      maxUsers: 50,
+      sharedLinks: [
+        {
+          name: 'Personal Link',
+          url: window.location.origin
+        }
+      ],
+      scenario: {
+        mode: ZegoUIKitPrebuilt.VideoConference
+      },
+    })
+  }
+
   return (
-    <div>JoinMeeting</div>
+    <div>
+      {isAllowed && (
+        <div 
+          className="myCallContainer" 
+          ref={myMeeting} 
+          style={{ width: '100%', height: '100vh' }}
+        >
+        </div>
+      )}
+    </div>
   )
 }

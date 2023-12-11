@@ -54,7 +54,7 @@ export const Login = () => {
                 <EuiSpacer size='xs' />
                 <EuiText textAlign='center' grow={false}>
                   <h3>
-                    <EuiTextColor>One Platform to</EuiTextColor>
+                    <EuiTextColor>Platform Number One</EuiTextColor>
                     <EuiTextColor color='#0b5cff'> connect</EuiTextColor>
                   </h3>
                 </EuiText>
