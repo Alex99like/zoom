@@ -15,6 +15,7 @@ import { generateMeetingId } from "../../utils/generateMeetingId"
 import { useAppSelector } from "../hooks"
 import { useNavigate } from "react-router-dom"
 import { useToast } from "../hooks/useToast"
+import { MeetingMaximumUserField } from "../components/FormComponents/MeetingMaximumUserField"
 
 export const VideoConference = () => {
   useAuth()
@@ -62,7 +63,6 @@ export const VideoConference = () => {
     if (!selectedUsers.length) {
       clonedShowErrors.meetingUser.show = true
       clonedShowErrors.meetingUser.message = ['Please select a User']
-      errors = true
     } else {
       clonedShowErrors.meetingUser.show = false
       clonedShowErrors.meetingUser.message = []
@@ -128,17 +128,25 @@ export const VideoConference = () => {
             isInvalid={showErrors.meetingName.show}
             error={showErrors.meetingName.message}
           />
-          <MeetingUsersField
-            label="Invite User"
-            options={users}
-            onChange={onUserChange}
-            selectedOptions={selectedUsers}
-            singleSelection={false}
-            isClearable={false}
-            placeholder="Select a user"
-            isInvalid={showErrors.meetingUser.show}
-            error={showErrors.meetingUser.message}
-          />
+          {anyoneCanJoin ? (
+            <MeetingMaximumUserField
+              value={size}
+              setValue={setSize}
+            />
+          ) : (
+            <MeetingUsersField
+              label="Invite User"
+              options={users}
+              onChange={onUserChange}
+              selectedOptions={selectedUsers}
+              singleSelection={false}
+              isClearable={false}
+              placeholder="Select a user"
+              isInvalid={showErrors.meetingUser.show}
+              error={showErrors.meetingUser.message}
+            />
+          )}
+          
           <MeetingsDateField
             selected={startDate}
             setStartDate={setStartDate}

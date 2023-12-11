@@ -13,3 +13,11 @@ export const getOneOnOneMeetingBreadCrumbs = (
   { text: 'Create Meeting', href: '#', onClick: () => { navigate('/create') } },
   { text: 'Create One on One Meeting' }
 ]
+
+export const getVideoConferenceMeetingBreadCrumbs = (
+  navigate: NavigateFunction
+) => [
+  { text: 'Dashboard', href: '#', onClick: () => { navigate('/') } },
+  { text: 'Create Meeting', href: '#', onClick: () => { navigate('/create') } },
+  { text: 'Create Video Conference' }
+]
