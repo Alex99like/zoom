@@ -1,14 +1,13 @@
-import { getDocs, query, where } from "firebase/firestore"
+import { getDocs, query } from "firebase/firestore"
 import { useEffect, useState } from "react"
 import { meetingsRef } from "../../utils/FirebaseConfig"
 import { useAppSelector } from "../hooks"
 import { MeetingType } from "../../utils/Types"
 import { useAuth } from "../hooks/useAuth"
 import { Header } from "../components/Header"
-import { EuiBadge, EuiBasicTable, EuiButton, EuiButtonIcon, EuiCopy, EuiFlexGroup, EuiFlexItem, EuiPanel } from "@elastic/eui"
+import { EuiBadge, EuiBasicTable, EuiButtonIcon, EuiCopy, EuiFlexGroup, EuiFlexItem, EuiPanel } from "@elastic/eui"
 import { Link } from "react-router-dom"
 import moment from "moment"
-import { EditFlyout } from "../components/EditFlyout"
 
 export const Meetings = () => {
   useAuth()

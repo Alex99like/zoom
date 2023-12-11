@@ -1,5 +1,4 @@
 import { useNavigate } from "react-router-dom"
-import { useAppSelector } from "../hooks"
 import { useAuth } from "../hooks/useAuth"
 import { EuiCard, EuiFlexGroup, EuiFlexItem, EuiImage } from "@elastic/eui"
 import dashboard1 from '../assets/notes.png'

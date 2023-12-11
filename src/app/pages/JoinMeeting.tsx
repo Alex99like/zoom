@@ -83,6 +83,7 @@ export const JoinMeeting = () => {
       } 
     }
     getMeetingData()
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userLoaded])
 
   const appId = 1069017457

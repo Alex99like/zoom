@@ -1,11 +1,9 @@
 import { Link, useLocation, useNavigate } from "react-router-dom"
 import { useAppSelector } from "../hooks"
 import { useEffect, useState } from "react"
-import { useDispatch } from "react-redux"
 import { EuiButtonIcon, EuiFlexGroup, EuiFlexItem, EuiHeader, EuiText, EuiTextColor } from "@elastic/eui"
 import { signOut } from "firebase/auth"
 import { firebaseAuth } from "../../utils/FirebaseConfig"
-import { changeTheme } from "../slices/AuthSlice"
 import { getCreateMeetingBreadCrumbs, getMeetingsBreadcrumbs, getMyMeetingsBreadcrumbs, getOneOnOneMeetingBreadCrumbs, getVideoConferenceMeetingBreadCrumbs } from "../../utils/breadCrumps"
 
 export const Header = () => {
@@ -15,7 +13,7 @@ export const Header = () => {
   //const isDarkTheme = useAppSelector((zoom) => zoom.auth.isDarkTheme)
   const [breadCrumbs, setBreadCrumbs] = useState([{ text: 'Главная' }])
   const [isResponsive, setIsResponsive] = useState(false)
-  const dispatch = useDispatch()
+  // const dispatch = useDispatch()
   const logout = () => {
     signOut(firebaseAuth)
   }

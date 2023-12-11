@@ -5,7 +5,7 @@ import { useAppSelector } from "../hooks"
 import { MeetingType } from "../../utils/Types"
 import { useAuth } from "../hooks/useAuth"
 import { Header } from "../components/Header"
-import { EuiBadge, EuiBasicTable, EuiButton, EuiButtonIcon, EuiCopy, EuiFlexGroup, EuiFlexItem, EuiPanel } from "@elastic/eui"
+import { EuiBadge, EuiBasicTable, EuiButtonIcon, EuiCopy, EuiFlexGroup, EuiFlexItem, EuiPanel } from "@elastic/eui"
 import { Link } from "react-router-dom"
 import moment from "moment"
 import { EditFlyout } from "../components/EditFlyout"
@@ -33,6 +33,7 @@ export const MyMeetings = () => {
 
   useEffect(() => {  
     getMyMeetings()
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userInfo])
 
   const [showEditFlyout, setShowEditFlyout] = useState(false)
