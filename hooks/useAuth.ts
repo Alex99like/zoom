@@ -1,6 +1,5 @@
 'use client'
 
-import { useNavigate } from "react-router-dom"
 import { useAppDispatch } from "@/store/hooks"
 import { useEffect } from "react"
 import { onAuthStateChanged } from "firebase/auth"

@@ -1,6 +1,3 @@
-import { NavigateFunction } from "react-router-dom"
-import { BreadCrumbsType } from "./Types"
-
 export const getCreateMeetingBreadCrumbs = (navigate: (href: string) => void) => [
   { text: 'Главная', href: '#', onClick: () => { navigate('/') } },
   { text: 'Создать мит' }
