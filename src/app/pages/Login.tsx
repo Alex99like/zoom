@@ -1,7 +1,7 @@
 import { EuiButton, EuiFlexGroup, EuiFlexItem, EuiImage, EuiPanel, EuiProvider, EuiSpacer, EuiText, EuiTextColor } from '@elastic/eui'
 import logo from '../assets/logo.png'
 import animation from '../assets/animation.png'
-import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth'
+import { GoogleAuthProvider, onAuthStateChanged, signInWithPopup } from 'firebase/auth'
 import { firebaseAuth, userRef } from '../../utils/FirebaseConfig'
 import { addDoc, getDocs, query, where } from 'firebase/firestore'
 import { useNavigate } from 'react-router-dom'
@@ -11,6 +11,10 @@ import { setUser } from '../slices/AuthSlice'
 export const Login = () => {
   const navigate = useNavigate()
   const dispatch = useAppDispatch()
+
+  onAuthStateChanged(firebaseAuth, (currentUser) => {
+    if (currentUser) navigate('/')
+  })
 
   const login = async () => {
     const provider = new GoogleAuthProvider()
