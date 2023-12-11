@@ -12,6 +12,9 @@ import { CreateMeeting } from './app/pages/CreateMeeting';
 import { OneOnOneMeeting } from './app/pages/OneOnOneMeeting';
 import { setToasts } from './app/slices/MeetingSlice';
 import { VideoConference } from './app/pages/VideoConference';
+import { MyMeetings } from './app/pages/MyMeetings';
+import { Meetings } from './app/pages/Meetings';
+import { JoinMeeting } from './app/pages/JoinMeeting';
 
 function App() {
   const dispatch = useAppDispatch()
@@ -60,6 +63,9 @@ function App() {
           <Route path='/create' element={<CreateMeeting />} />
           <Route path='/create1on1' element={<OneOnOneMeeting />} />
           <Route path='/createvideoconference' element={<VideoConference />} />
+          <Route path='/mymeetings' element={<MyMeetings />} />
+          <Route path='/meetings' element={<Meetings />} />
+          <Route path='/join/:id' element={<JoinMeeting />} />
           <Route path='/' element={<Dashboard />} />
           <Route path='*' element={<Dashboard/>} />
         </Routes>

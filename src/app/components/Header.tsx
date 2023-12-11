@@ -6,7 +6,7 @@ import { EuiButtonIcon, EuiFlexGroup, EuiFlexItem, EuiHeader, EuiText, EuiTextCo
 import { signOut } from "firebase/auth"
 import { firebaseAuth } from "../../utils/FirebaseConfig"
 import { changeTheme } from "../slices/AuthSlice"
-import { getCreateMeetingBreadCrumbs, getOneOnOneMeetingBreadCrumbs, getVideoConferenceMeetingBreadCrumbs } from "../../utils/breadCrumps"
+import { getCreateMeetingBreadCrumbs, getMeetingsBreadcrumbs, getMyMeetingsBreadcrumbs, getOneOnOneMeetingBreadCrumbs, getVideoConferenceMeetingBreadCrumbs } from "../../utils/breadCrumps"
 
 export const Header = () => {
   const navigate = useNavigate()
@@ -28,6 +28,10 @@ export const Header = () => {
       setBreadCrumbs(getOneOnOneMeetingBreadCrumbs(navigate))
     else if (pathname === '/createvideoconference')
       setBreadCrumbs(getVideoConferenceMeetingBreadCrumbs(navigate))
+    else if (pathname === '/mymeetings')
+      setBreadCrumbs(getMyMeetingsBreadcrumbs(navigate))
+    else if (pathname === '/meetings')
+      setBreadCrumbs(getMeetingsBreadcrumbs(navigate))
   }, [location, navigate])
 
 //   const invertTheme = () => {

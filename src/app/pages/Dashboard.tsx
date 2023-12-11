@@ -40,7 +40,7 @@ export const Dashboard = () => {
               icon={<EuiImage size={'100%'} alt="icon" src={dashboard2} />}
               title={'Мои Миты'}
               description='Просмотр созданных вами митов'
-              onClick={() => navigate('/create')}
+              onClick={() => navigate('/mymeetings')}
               paddingSize="xl"
             />
           </EuiFlexItem>
@@ -49,7 +49,7 @@ export const Dashboard = () => {
               icon={<EuiImage size={'5rem'} alt="icon" src={dashboard3} />}
               title={'Миты'}
               description='Просмотрите миты, на которые вас пригласили.'
-              onClick={() => navigate('/create')}
+              onClick={() => navigate('/meetings')}
               paddingSize="xl"
             />
           </EuiFlexItem>

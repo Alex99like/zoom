@@ -10,44 +10,37 @@ import { Link } from "react-router-dom"
 import moment from "moment"
 import { EditFlyout } from "../components/EditFlyout"
 
-export const MyMeetings = () => {
+export const Meetings = () => {
   useAuth()
   const [meetings, setMeeting] = useState<any>([])
   const userInfo = useAppSelector(zoom => zoom.auth.userInfo)
 
-  const getMyMeetings = async () => {
-    const firestoreQuery = query(meetingsRef, where('createdBy', '==', userInfo?.uid))
-    const fetchedMeetings = await getDocs(firestoreQuery)
-  
-    if (fetchedMeetings.docs.length) {
-      const myMeetings: Array<MeetingType> = []
-      fetchedMeetings.forEach((meeting) => {
-        myMeetings.push({
-          docId: meeting.id,
-          ...(meeting.data() as MeetingType)
-        })
-      })
-      setMeeting(myMeetings)
-    } 
-  }
-
   useEffect(() => {  
-    getMyMeetings()
+    if (userInfo) {
+      const getUserMeetings = async () => {
+        const firestoreQuery = query(meetingsRef)
+        const fetchedMeeting = await getDocs(firestoreQuery)
+        if (fetchedMeeting.docs.length) {
+          const myMeetings: Array<MeetingType> = []
+          fetchedMeeting.forEach(meeting => {
+            const data = meeting.data() as MeetingType
+            if (data.createdBy === userInfo?.uid) myMeetings.push(data)
+            else if (data.meetingType === 'anyone-can-join') myMeetings.push(data)
+            else {
+              const index = data.invitedUsers.findIndex(
+                (user) => user === userInfo.uid
+              )
+              if (index !== -1) {
+                myMeetings.push(data)
+              }
+            }
+          })
+          setMeeting(myMeetings)
+        }
+      }
+      getUserMeetings()
+    }
   }, [userInfo])
-
-  const [showEditFlyout, setShowEditFlyout] = useState(false)
-  const [editMeeting, setEditMeeting] = useState<MeetingType>()
-
-  const openEditFlyout = (meeting: MeetingType) => {
-    setShowEditFlyout(true)
-    setEditMeeting(meeting)
-  }
-
-  const closeEditFlyout = (dataChanged = false) => {
-    setShowEditFlyout(false)
-    setEditMeeting(undefined)
-    if (dataChanged) getMyMeetings()
-  }
 
   const columns = [
     {
@@ -83,20 +76,6 @@ export const MyMeetings = () => {
           }
         } else return <EuiBadge color="danger">Cancelled</EuiBadge>
       } 
-    },
-    {
-      field: '',
-      name: 'Edit',
-      render: (meeting: MeetingType) => {
-        return <EuiButtonIcon 
-          aria-label="meeting-edit" 
-          iconType={'indexEdit'} 
-          color='danger' 
-          display="base" 
-          isDisabled={!meeting.status || moment(meeting.meetingDate).isBefore(moment().format('L'))}
-          onClick={() => openEditFlyout(meeting)} 
-        />
-      }
     },
     {
       field: 'meetingId',
@@ -137,9 +116,6 @@ export const MyMeetings = () => {
           </EuiPanel>
         </EuiFlexItem>
       </EuiFlexGroup>
-      {showEditFlyout && (
-        <EditFlyout closeFlyout={closeEditFlyout} meetings={editMeeting} />
-      )}
     </div>
   )
 }

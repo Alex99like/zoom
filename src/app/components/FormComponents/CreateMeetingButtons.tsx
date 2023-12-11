@@ -3,10 +3,12 @@ import { useNavigate } from "react-router-dom"
 
 interface CreateMeetingButtonsProps {
   createMeeting: () => void
+  isEdit?: boolean
+  closeFlyout?: () => void
 }
 
 export const CreateMeetingButtons = ({
-  createMeeting
+  createMeeting, closeFlyout, isEdit
 }: CreateMeetingButtonsProps) => {
   const navigate = useNavigate()
 
@@ -17,7 +19,7 @@ export const CreateMeetingButtons = ({
           style={{ fontWeight: 600, color: '#fff' }} 
           color="danger" 
           fill 
-          onClick={() => navigate('/')}
+          onClick={() => (isEdit ? closeFlyout!() : navigate('/'))}
         >
           Cancel
         </EuiButton>

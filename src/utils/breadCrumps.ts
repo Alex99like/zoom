@@ -21,3 +21,17 @@ export const getVideoConferenceMeetingBreadCrumbs = (
   { text: 'Create Meeting', href: '#', onClick: () => { navigate('/create') } },
   { text: 'Create Video Conference' }
 ]
+
+export const getMyMeetingsBreadcrumbs = (
+  navigate: NavigateFunction
+) => [
+  { text: 'Dashboard', href: '#', onClick: () => { navigate('/') } },
+  { text: 'My Meetings' }
+]
+
+export const getMeetingsBreadcrumbs = (
+  navigate: NavigateFunction
+) => [
+  { text: 'Dashboard', href: '#', onClick: () => { navigate('/') } },
+  { text: 'Meetings' }
+]

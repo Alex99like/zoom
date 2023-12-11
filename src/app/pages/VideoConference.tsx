@@ -21,8 +21,9 @@ export const VideoConference = () => {
   useAuth()
   const [users] = useFetchUsers()
   const [createToast] = useToast()
-  const uid = useAppSelector((zoom) => zoom.auth.userInfo?.uid)
   const navigate = useNavigate()
+
+  const uid = useAppSelector((zoom) => zoom.auth.userInfo?.uid)
 
   const [meetingName, setMeetingName] = useState('')
   const [selectedUsers, setSelectedUsers] = useState<Array<UserType>>([])
